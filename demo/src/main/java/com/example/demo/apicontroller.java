@@ -10,20 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class apicontroller {
-    List <user> list=new ArrayList<>();
-   
+    List<user> list = new ArrayList<user>();
+
     @GetMapping("/welcome")
-    public String getpage(){
+    public String getpage() {
         return ("welcome");
     }
-    
-    @PostMapping("/user")
-    public user adduser(@RequestBody user u)
-    {
-        list.add(u);
-       return u;
-    }
 
-   
-   
+    @PostMapping("/user")
+    public response adduser(@RequestBody user u) {
+        list.add(u);
+        return new response("200", "Added User Successfully", u);
+    }
 }
